@@ -1,0 +1,8 @@
+scikit-learn
+hdbscan
+matplotlib
+seaborn
+numpy
+pandas
+scipy
+tabulate
