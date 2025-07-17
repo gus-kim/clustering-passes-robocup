@@ -31,12 +31,28 @@ Este projeto realiza a análise de dados de partidas de futebol de robôs (prova
 Clone o repositório e instale as dependências:
 
 ```bash
-git clone <URL_DO_SEU_REPOSITORIO_NO_GITHUB>
-cd T2_pass_clustering
+git clone https://github.com/gus-kim/clustering-passes-robocup.git
+cd clustering-passes-robocup
 pip install -r requirements.txt
 ```
 
-### 3. Executando a Análise
+### 3. Configuração dos Dados
+
+Este repositório não armazena os arquivos de dados brutos ou processados. Para executar a análise, você precisa criar a estrutura de diretórios e adicionar os arquivos de dados manualmente.
+
+1.  **Crie os diretórios de dados:**
+
+    ```bash
+    mkdir -p data_bruto CSV_Completo
+    ```
+
+2.  **Adicione seus dados:**
+    *   Coloque seus arquivos de log de partida (`.rcg.gz`) no diretório `data_bruto/`.
+    *   Converta os logs para o formato CSV e coloque os arquivos resultantes no diretório `CSV_Completo/`.
+
+    **Nota:** O script `run_analysis.sh` espera encontrar o arquivo CSV de entrada (por exemplo, `Helios_vs_Cyrus_2023.csv`) dentro da pasta `CSV_Completo/`.
+
+### 4. Executando a Análise
 
 O script `scripts/run_analysis.sh` automatiza todo o processo. Basta fornecer o nome do arquivo CSV de entrada da pasta `CSV_Completo/`.
 
