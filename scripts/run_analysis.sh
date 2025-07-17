@@ -27,7 +27,7 @@ fi
 # --- Pipeline ---
 
 echo "[PASSO 1/2] Iniciando a filtragem de passes..."
-python3 src/filter.py "${INPUT_FILE}" "${FILTERED_FILE}"
+python3 src/feature_extraction.py "${INPUT_FILE}" "${FILTERED_FILE}"
 
 # Verifica se a filtragem foi bem-sucedida
 if [ $? -ne 0 ]; then
@@ -37,7 +37,7 @@ fi
 
 echo "
 [PASSO 2/2] Iniciando a análise de clustering..."
-python3 src/Arquivo_final2.py "${FILTERED_FILE}"
+python3 src/clustering_analysis.py "${FILTERED_FILE}"
 
 if [ $? -ne 0 ]; then
     echo "Erro durante a execução do script de análise."

@@ -2,47 +2,53 @@
 
 Este projeto realiza a análise de dados de partidas de futebol de robôs (provavelmente da competição RoboCup), com o objetivo de agrupar (clusterizar) os passes em diferentes categorias com base em suas características.
 
-## Estrutura do Repositório
+## Estrutura de Arquivos
 
 ```
 /
-├─── src/
-│   ├─── Arquivo_final2.py       # Script principal que executa o clustering.
-│   └─── filter.py               # Script para pré-processar e filtrar os dados de passe.
-├─── CSV_Completo/           # Contém os dados brutos das partidas convertidos para CSV.
-├─── CSV_filtrado/           # Contém os dados de passes filtrados, prontos para análise.
-├─── data_bruto/             # Contém os logs originais das partidas (.rcg.gz) e o conversor.
-├─── README.md               # Este arquivo.
-└─── requirements.txt        # Dependências do Python.
+├─── src/                     # Contém os scripts Python
+│   ├─── clustering_analysis.py # Script principal que executa o clustering.
+│   └─── feature_extraction.py  # Script para pré-processar e filtrar os dados de passe.
+├─── CSV_Completo/            # Contém os dados brutos das partidas convertidos para CSV.
+├─── CSV_filtrado/            # Contém os dados de passes filtrados, prontos para análise.
+├─── data_bruto/              # Contém os logs originais das partidas (.rcg.gz) e o conversor.
+├─── .gitignore               # Arquivos e diretórios a serem ignorados pelo Git.
+├─── README.md                # Este arquivo.
+├─── requirements.txt         # Dependências do Python.
+└─── scripts/
+    └─── run_analysis.sh      # Script para automatizar a análise.
 ```
 
-## Como Executar
+## Como Usar
 
-### 1. Instalar Dependências
+### 1. Pré-requisitos
 
-Antes de começar, instale todas as bibliotecas Python necessárias:
+- Python 3.x
+- Git
+
+### 2. Instalação
+
+Clone o repositório e instale as dependências:
+
 ```bash
+git clone <URL_DO_SEU_REPOSITORIO_NO_GITHUB>
+cd T2_pass_clustering
 pip install -r requirements.txt
 ```
 
-### 2. Filtragem dos Dados
+### 3. Executando a Análise
 
-Use o script `src/filter.py` para processar um CSV da pasta `CSV_Completo/` e extrair as características dos passes. O resultado será salvo em `CSV_filtrado/`.
-
-**Exemplo:**
-```bash
-python src/filter.py CSV_Completo/Helios_vs_Cyrus_2023.csv CSV_filtrado/pass_features_helios_cyrus.csv
-```
-
-### 3. Execução do Clustering
-
-Use o script `src/Arquivo_final2.py` para carregar os dados filtrados e realizar a análise de clustering.
+O script `scripts/run_analysis.sh` automatiza todo o processo. Basta fornecer o nome do arquivo CSV de entrada da pasta `CSV_Completo/`.
 
 **Exemplo:**
+
 ```bash
-python src/Arquivo_final2.py CSV_filtrado/pass_features_helios_cyrus.csv
+./run_analysis.sh Helios_vs_Cyrus_2023.csv
 ```
 
-## Automação
+O script irá:
 
-Para facilitar, você pode usar o script `run_analysis.sh` para executar o pipeline completo para um arquivo de entrada específico. Veja o arquivo para mais detalhes.
+1.  Executar `src/feature_extraction.py` para pré-processar os dados.
+2.  Executar `src/clustering_analysis.py` para realizar a análise de clustering.
+
+Os resultados, incluindo gráficos e tabelas, serão exibidos na tela.
